@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: startupXchange_rails_development
+  database: startupxchange_rails_development
+  username: sxcuser
+  password: <%= ENV['SXCHANGE_DATABASE_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -57,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: startupXchange_rails_test
+  database: startupxchange_rails_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +82,6 @@ test:
 #
 production:
   <<: *default
-  database: startupXchange_rails_production
-  username: startupXchange_rails
-  password: <%= ENV['STARTUPXCHANGE_RAILS_DATABASE_PASSWORD'] %>
+  database: startupxchange_rails_production
+  username: sxcuser
+  password: <%= ENV['SXCHANGE_DATABASE_PASSWORD'] %>

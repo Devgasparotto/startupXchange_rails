@@ -1,0 +1,2 @@
+class UtilityController < ApplicationController
+end
