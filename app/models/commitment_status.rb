@@ -1,0 +1,2 @@
+class CommitmentStatus < ApplicationRecord
+end

@@ -1,0 +1,2 @@
+class Entreprenuer < ApplicationRecord
+end

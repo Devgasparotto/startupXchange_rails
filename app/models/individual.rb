@@ -1,0 +1,2 @@
+class Individual < ApplicationRecord
+end

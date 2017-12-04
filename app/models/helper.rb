@@ -1,0 +1,2 @@
+class Helper < ApplicationRecord
+end
