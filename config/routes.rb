@@ -3,4 +3,7 @@ Rails.application.routes.draw do
 
   root 'utility#index'
 
+  #Chatfuel Controller
+  get "/isValidCommitmentDate/", to: "chatfuel#IsValidCommitmentDate" 
+
 end
