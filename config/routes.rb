@@ -20,4 +20,6 @@ Rails.application.routes.draw do
   post "/CreateCommitment/", to: "commitment#CreateCommitment"
   get "/ViewCommitments/", to: "commitment#ViewCommitments"
   post "/AcceptCommitmentOffer/", to: "commitment#AcceptCommitmentOffer"
+  post "/RejectCommitmentOffer/", to: "commitment#RejectCommitmentOffer"
+  
 end
