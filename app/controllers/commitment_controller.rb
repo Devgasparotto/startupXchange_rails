@@ -14,7 +14,7 @@ class CommitmentController < ApplicationController
 			if !inputDate.nil? && !inputDate.empty? && IsValidFutureDate(inputDate)
 				if !entrepreneurID.nil? && !entrepreneurID.empty?
 					if !commitmentOffer.nil? && !commitmentOffer.empty?
-						com = Commitment.new(helper_id: ind.id, entreprenuer_id: entrepreneurID, commitmentOffer: commitmentOffer, commitmentDueDate: inputDate, commitmentStatus: 1)
+						com = Commitment.new(helper_id: ind.id, entreprenuer_id: entrepreneurID, commitmentOffer: commitmentOffer, commitmentDueDate: inputDate, commitmentStatus_id: 1)
 						com.save
 						comID = com.id
 					end
