@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   #Individual Controller
   post "/registerFacebookIndividual/", to: "individual#RegisterFacebookIndividual"
 
+  #Helper Controller
+  post "/SetIndividualAsHelper/", to: "helper#SetIndividualAsHelper"
+
 end
