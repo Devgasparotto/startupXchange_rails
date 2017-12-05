@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   #Helper Controller
   post "/SetIndividualAsHelper/", to: "helper#SetIndividualAsHelper"
 
+  #Entrepreneur Controller
+  post "/SetIndividualAsEntrepreneur/", to: "entrepreneur#SetIndividualAsEntrepreneur"
+
 end
