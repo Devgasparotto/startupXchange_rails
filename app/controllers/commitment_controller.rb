@@ -96,6 +96,7 @@ class CommitmentController < ApplicationController
 		sourceID = params['messenger user id']
 
 		ent = Individual.find_by(sourceID: sourceID)
+		puts commitmentID
 		com = Commitment.find_by(id: commitmentID)
 		puts ent
 		puts com
