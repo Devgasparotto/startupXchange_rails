@@ -100,7 +100,7 @@ class CommitmentController < ApplicationController
 		com = Commitment.find_by(id: commitmentID)
 		puts ent
 		puts com
-		if !com.nil? && !ent.nil? #&& com.entreprenuer_id == ent.id #Correct entrepreneur, just to ensure that the individual is not doing anything to break the application
+		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id #Correct entrepreneur, just to ensure that the individual is not doing anything to break the application
 			puts "Attempt to send acceptance confirmation"
 			entName = "#{ent.firstName} #{ent.lastName}"
 			helperID = com.helper_id
