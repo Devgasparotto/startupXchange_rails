@@ -39,4 +39,13 @@ module CommitmentHelper
 		SendMessageToIndividualByID(entID, blockName, userAttributes)
 	end
 
+	def SendCommitmentCompletionAcceptance(entName, comID, helperID)
+		userAttributes = {
+			entrepreneurName: "#{entName}",
+			commitmentID: "#{comID}"
+		}
+		blockName = "CompletionAccepted"
+		SendMessageToIndividualByID(helperID, blockName, userAttributes)
+	end
+
 end
