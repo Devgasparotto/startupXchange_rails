@@ -9,7 +9,7 @@ module ChatfuelHelper
 
 		userAttributes.each do |ua|
 			puts ua
-			broadcastURL = "#{broadcastURL}&#{ua[0]}=#{ua[1]}"
+			broadcastURL = "#{broadcastURL}&#{ua[0]}='#{ua[1]}'"
 		end
 
 		return broadcastURL
