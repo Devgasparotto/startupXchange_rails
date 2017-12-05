@@ -6,9 +6,10 @@ module ChatfuelHelper
 		broadcastURL = broadcastURL.gsub('{TOKEN}', ENV['CHATFUEL_TOKEN'])
 		broadcastURL = broadcastURL.gsub('{SENDER_ID}', senderId)
 		broadcastURL = broadcastURL.gsub('{BLOCK_NAME}', blockName)
+
 		userAttributes.each do |ua|
 			puts ua
-			broadcastURL + ua[0] + "=" + ua[1]
+			broadcastURL = "#{broadcastURL}&#{ua[0]}=#{ua[1]}"
 		end
 
 		return broadcastURL
