@@ -1,4 +1,6 @@
 class CommitmentController < ApplicationController
+	skip_before_action :verify_authenticity_token
+
 	include UtilityHelper
 
 	def CreateCommitment
