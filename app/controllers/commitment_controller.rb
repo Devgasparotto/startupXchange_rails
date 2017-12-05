@@ -20,6 +20,7 @@ class CommitmentController < ApplicationController
 						com.save #TODO: this should be after the SendCommitOfferToEntrepreneur
 						comID = com.id
 						helperName = "#{ind.firstName} #{ind.lastName}"
+						puts entrepreneurID
 						SendCommitmentOfferToEntrepreneur(helperName, comID, commitmentOffer, entrepreneurID)
 						puts "Offer sent"
 					end
