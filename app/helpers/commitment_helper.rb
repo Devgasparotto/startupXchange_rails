@@ -53,7 +53,7 @@ module CommitmentHelper
 			entrepreneurName: "#{entName}",
 			commitmentID: "#{comID}"
 		}
-		blockName = "CompletionRejection"
+		blockName = "CompletionRejected"
 		SendMessageToIndividualByID(helperID, blockName, userAttributes)
 	end
 
