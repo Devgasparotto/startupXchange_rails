@@ -127,7 +127,7 @@ class CommitmentController < ApplicationController
 	end
 
 	def PromptCommitmentComplete
-		commitmentID = params[:commitmentID].gsub(/\s|"|'/, '')
+		commitmentID = params[:commitmentIDToComplete].gsub(/\s|"|'/, '')
 		sourceID = params['messenger user id']
 
 		helper = Individual.find_by(sourceID: sourceID)
