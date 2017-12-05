@@ -2,6 +2,7 @@ class CommitmentController < ApplicationController
 	skip_before_action :verify_authenticity_token
 
 	include UtilityHelper
+	include CommitmentHelper
 
 	def CreateCommitment
 		sourceID = params['messenger user id']
@@ -14,9 +15,13 @@ class CommitmentController < ApplicationController
 			if !inputDate.nil? && !inputDate.empty? && IsValidFutureDate(inputDate)
 				if !entrepreneurID.nil? && !entrepreneurID.empty?
 					if !commitmentOffer.nil? && !commitmentOffer.empty?
+						puts "Beginning Commitment Creation"
 						com = Commitment.new(helper_id: ind.id, entreprenuer_id: entrepreneurID, commitmentOffer: commitmentOffer, commitmentDueDate: inputDate, commitmentStatus_id: 1)
-						com.save
+						com.save #TODO: this should be after the SendCommitOfferToEntrepreneur
 						comID = com.id
+						helperName = "#{ind.firstName} #{ind.lastName}"
+						SendCommitmentOfferToEntrepreneur(helperName, comID, commitmentOffer, entrepreneurID)
+						puts "Offer sent"
 					end
 				end
 			end
