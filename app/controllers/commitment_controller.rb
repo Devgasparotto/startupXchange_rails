@@ -47,6 +47,7 @@ class CommitmentController < ApplicationController
 	    }
 
 	    begin
+	      puts Commitments.where(helper_id: params['messenger user id']).to_a
 	      commitments = Commitments.where(helper_id: params['messenger user id']).to_a
 	      numCards = commitments.length / 3
 	      numCards += 1 if (commitments.length % 3 ) > 0
