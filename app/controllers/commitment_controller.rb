@@ -47,6 +47,8 @@ class CommitmentController < ApplicationController
 	    }
 
 	    begin
+	    	sourceID = params['messenger user id']
+			ind = Individual.find_by(sourceID: sourceID)
 	      puts Commitment.where(helper_id: ind.id)
 	      commitments = Commitment.where(helper_id: ind.id).to_a
 	      numCards = commitments.length / 3
