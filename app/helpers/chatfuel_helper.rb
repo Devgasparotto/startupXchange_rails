@@ -21,7 +21,7 @@ module ChatfuelHelper
 			SendMessageToIndividual(ind.sourceID, blockName, userAttributes)
 		end
 	end
-	
+
 	def SendMessageToIndividual(receiverSourceID, blockName, userAttributes)
 		require 'net/http'
 		require 'uri'
