@@ -37,4 +37,6 @@ class EntrepreneurController < ApplicationController
 
 		render json: response
 	end
+
+	
 end

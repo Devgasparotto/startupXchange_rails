@@ -15,6 +15,13 @@ module ChatfuelHelper
 		return broadcastURL
 	end
 
+	def SendMessageToIndividualByID(individualID, blockName, userAttributes)
+		ind = Individual.find_by(id: entID)
+		if !ind.nil?
+			SendMessageToIndividual(ind.sourceID, blockName, userAttributes)
+		end
+	end
+	
 	def SendMessageToIndividual(receiverSourceID, blockName, userAttributes)
 		require 'net/http'
 		require 'uri'

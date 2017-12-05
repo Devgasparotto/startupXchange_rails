@@ -90,4 +90,21 @@ class CommitmentController < ApplicationController
 	    render json: response
 
 	end
+
+	def AcceptCommitmentOffer
+		commitmentID = params[:commitmentID]
+		sourceID = params['messenger user id']
+
+		ent = Individual.find_by(sourceID: sourceID)
+		com = Commitment.find_by(id: commitmentID)
+		if !com.nil? && !ent.nil? && com.EntreprenuerID == ent.id #Correct entrepreneur, just to ensure that the individual is not doing anything to break the application
+			entName = "#{ent.firstName} #{ent.lastName}"
+			helperID = com.helper_id
+			SendCommitmentAcceptanceToHelper(entName, com.id, helperID)
+			puts "Offer sent"
+		end
+
+		render html: "Pass"
+	end
+
 end

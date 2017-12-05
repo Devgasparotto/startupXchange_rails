@@ -9,11 +9,17 @@ module CommitmentHelper
 			commitmentOffer: "#{comOffer}"
 		}
 		blockName = "ReceiveCommitmentOffer"
-		ent = Individual.find_by(id: entID)
-		if !ent.nil?
-			SendMessageToIndividual(ent.sourceID, blockName, userAttributes)
-		end
-		
-	end	
+		SendMessageToIndividualByID(entID, blockName, userAttributes)
+	end
+
+	def SendCommitmentAcceptanceToHelper(entName, comID, helperID)
+		userAttributes = {
+			entrepreneurName: "#{entName}",
+			commitmentID: "#{comID}"
+		}
+		blockName = "CommitmentOfferAccepted"
+		SendMessageToIndividualByID(helperID, blockName, userAttributes)
+	end
+
 
 end
