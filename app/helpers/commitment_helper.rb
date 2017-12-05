@@ -9,7 +9,7 @@ module CommitmentHelper
 			commitmentOffer: "#{comOffer}"
 		}
 		blockName = "ReceiveCommitmentOffer"
-		ent = Individual.find_by(sourceID: entID)
+		ent = Individual.find_by(id: entID)
 		if !ent.nil?
 			SendMessageToIndividual(ent.sourceID, blockName, userAttributes)
 		end
