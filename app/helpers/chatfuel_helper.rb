@@ -16,7 +16,7 @@ module ChatfuelHelper
 	end
 
 	def SendMessageToIndividualByID(individualID, blockName, userAttributes)
-		ind = Individual.find_by(id: entID)
+		ind = Individual.find_by(id: individualID)
 		if !ind.nil?
 			SendMessageToIndividual(ind.sourceID, blockName, userAttributes)
 		end
