@@ -8,7 +8,7 @@ module CommitmentHelper
 			commitmentID: "#{comID}",
 			commitmentOffer: "#{comOffer}"
 		}
-		blockName = "ReceiveCommitmentOffer"
+		blockName = "ReceiveHelperOffer"
 		SendMessageToIndividualByID(entID, blockName, userAttributes)
 	end
 
