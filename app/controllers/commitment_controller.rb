@@ -157,4 +157,20 @@ class CommitmentController < ApplicationController
 		render html: "Pass"
 	end
 
+	def RejectCommitmentCompletion
+		commitmentID = params[:commitmentID].gsub(/\s|"|'/, '')
+		sourceID = params['messenger user id']
+
+		ent = Individual.find_by(sourceID: sourceID)
+		com = Commitment.find_by(id: commitmentID)
+		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id
+			puts "Attempting to Send Acceptance"
+			entName = "#{ent.firstName} #{ent.lastName}"
+			helperID = com.helper_id
+			SendCommitmentCompletionRejection(entName, com.id, helperID)
+		end
+
+		render html: "Pass"
+	end
+
 end
