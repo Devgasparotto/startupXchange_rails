@@ -92,7 +92,7 @@ class CommitmentController < ApplicationController
 	end
 
 	def AcceptCommitmentOffer
-		commitmentID = params[:commitmentID]
+		commitmentID = params[:commitmentID].gsub(/\s|"|'/, '')
 		sourceID = params['messenger user id']
 
 		ent = Individual.find_by(sourceID: sourceID)
