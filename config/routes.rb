@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   post "/SetIndividualAsEntrepreneur/", to: "entrepreneur#SetIndividualAsEntrepreneur"
   post "/IsValidEntrepreneur/", to: "entrepreneur#IsValidEntrepreneur"
 
+  #Commitment Controller
+  post "/CreateCommitment/", to: "commitment#CreateCommitment"
 end
