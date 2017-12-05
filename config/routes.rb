@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 
   #Commitment Controller
   post "/CreateCommitment/", to: "commitment#CreateCommitment"
+  get "/ViewCommitments/", to: "commitment#ViewCommitments"
 end
