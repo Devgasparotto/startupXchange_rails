@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   #Entrepreneur Controller
   post "/SetIndividualAsEntrepreneur/", to: "entrepreneur#SetIndividualAsEntrepreneur"
+  post "/IsValidEntrepreneur/", to: "entrepreneur#IsValidEntrepreneur"
 
 end

@@ -12,4 +12,28 @@ class EntrepreneurController < ApplicationController
 
 		render html: "Pass"
 	end
+
+	def IsValidEntrepreneur
+		expectedName = params[:inputName]
+		expectedFirstLast = expectedName.split(' ')
+		expectedFirst = expectedFirstLast[0]
+		expectedLast = expectedFirstLast[1]
+		isValid = false
+		entrepreneurID = 0
+
+		ent = Individual.find_by(firstName: expectedFirst, lastName: expectedLast) #? isEntreprenuer = 1?
+		if !ent.nil? && !ent.empty?
+			isValid = true
+			entrepreneurID = ent.id
+		end
+		
+		response = {
+			"set_attributes": {
+				"isValidEntrepreneur": "#{isValid}",
+				"entrepreneurID": "#{entrepreneurID}"
+			}
+		}
+
+		render json: response
+	end
 end
