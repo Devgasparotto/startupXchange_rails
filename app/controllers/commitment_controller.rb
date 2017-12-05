@@ -73,9 +73,9 @@ class CommitmentController < ApplicationController
 	              {
 	                type: "show_block",
 	                title: "#{commitments[j].id} #{commitments[j].commitmentOffer}",
-	                block_name: "Helper Hub",
+	                block_name: "AttemptToComplete",
 	                set_attributes: {
-	                  currentCommitmentID: "#{commitments[j].id}"
+	                  commitmentIDToComplete: "#{commitments[j].id}"
 	                }
 	              }
 	            end
@@ -115,15 +115,27 @@ class CommitmentController < ApplicationController
 		sourceID = params['messenger user id']
 
 		ent = Individual.find_by(sourceID: sourceID)
-		puts commitmentID
 		com = Commitment.find_by(id: commitmentID)
-		puts ent
-		puts com
 		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id #Correct entrepreneur, just to ensure that the individual is not doing anything to break the application
 			puts "Attempt to send rejection of offer"
 			entName = "#{ent.firstName} #{ent.lastName}"
 			helperID = com.helper_id
 			SendCommitmentRejectionToHelper(entName, com.id, helperID)
+		end
+
+		render html: "Pass"
+	end
+
+	def PromptCommitmentComplete
+		commitmentID = params[:commitmentID].gsub(/\s|"|'/, '')
+		sourceID = params['messenger user id']
+
+		helper = Individual.find_by(sourceID: sourceID)
+		com = Commitment.find_by(id: commitmentID)
+		if !com.nil? && !helper.nil? && com.helper_id == helper.id
+			helperName = "#{helper.firstName} #{helper.lastName}"
+			entID = com.entreprenuer_id
+			SendCommitmentCompletionPrompt(helperName, com.id, entID)
 		end
 
 		render html: "Pass"

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
   get "/ViewCommitments/", to: "commitment#ViewCommitments"
   post "/AcceptCommitmentOffer/", to: "commitment#AcceptCommitmentOffer"
   post "/RejectCommitmentOffer/", to: "commitment#RejectCommitmentOffer"
-  
+  post "/PromptCommitmentComplete/", to: "commitment#PromptCommitmentComplete"
+
 end

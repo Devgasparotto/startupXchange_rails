@@ -30,4 +30,13 @@ module CommitmentHelper
 		SendMessageToIndividualByID(helperID, blockName, userAttributes)
 	end
 
+	def SendCommitmentCompletionPrompt(helperName, comID, entID)
+		userAttributes = {
+			helperName: "#{helperName}",
+			commitmentID: "#{comID}"
+		}
+		blockName = "CommitmentCompletePrompt"
+		SendMessageToIndividualByID(entID, blockName, userAttributes)
+	end
+
 end
