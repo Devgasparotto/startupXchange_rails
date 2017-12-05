@@ -21,6 +21,7 @@ module ChatfuelHelper
 
 		blockName = "ReceiveHelperOffer"
 		broadcastURL = CreateBroadcastURL(receiverSourceID, blockName, userAttributes)
+		puts broadcastURL
 		uri = URI.parse(broadcastURL)
 		request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
 		req_options = {
