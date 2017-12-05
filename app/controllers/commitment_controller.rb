@@ -97,7 +97,7 @@ class CommitmentController < ApplicationController
 
 		ent = Individual.find_by(sourceID: sourceID)
 		com = Commitment.find_by(id: commitmentID)
-		if !com.nil? && !ent.nil? && com.EntreprenuerID == ent.id #Correct entrepreneur, just to ensure that the individual is not doing anything to break the application
+		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id #Correct entrepreneur, just to ensure that the individual is not doing anything to break the application
 			entName = "#{ent.firstName} #{ent.lastName}"
 			helperID = com.helper_id
 			SendCommitmentAcceptanceToHelper(entName, com.id, helperID)
