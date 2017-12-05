@@ -20,9 +20,10 @@ class EntrepreneurController < ApplicationController
 		expectedLast = expectedFirstLast[1]
 		isValid = false
 		entrepreneurID = 0
-
+		puts expectedFirst
+		puts expectedLast
 		ent = Individual.find_by(firstName: expectedFirst, lastName: expectedLast) #? isEntreprenuer = 1?
-		if !ent.nil? && !ent.empty?
+		if !ent.nil?
 			isValid = true
 			entrepreneurID = ent.id
 		end
