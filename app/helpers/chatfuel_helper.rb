@@ -27,17 +27,19 @@ module ChatfuelHelper
 		  use_ssl: uri.scheme == "https",
 		}
 
-		# response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-		# 	begin
-		# 		http.request(request)
-		# 	rescue => e
-		# 		puts e
-		# 	end
-		# end
+		response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+			begin
+				http.request(request)
+				puts "request made"
+			rescue => e
+				puts e
+			end
+		end
 
-		# if response.message == 'OK'
-		# 	#Message sent succesfully
-		# end
+		if response.message == 'OK'
+			puts "Message sent succesfully"
+			#Message sent succesfully
+		end
 	end
 
 	
