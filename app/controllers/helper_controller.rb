@@ -11,6 +11,7 @@ class HelperController < ApplicationController
 			puts "Individual exists"
 			ind.isHelper = 1
 			ind.isEntreprenuer = 0
+			ind.save
 		end
 
 		render html: "Pass"
