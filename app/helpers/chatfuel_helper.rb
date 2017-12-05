@@ -8,7 +8,6 @@ module ChatfuelHelper
 		broadcastURL = broadcastURL.gsub('{BLOCK_NAME}', blockName)
 
 		userAttributes.each do |ua|
-			puts ua
 			broadcastURL = "#{broadcastURL}&#{ua[0]}='#{ua[1]}'"
 		end
 
@@ -26,7 +25,6 @@ module ChatfuelHelper
 		require 'net/http'
 		require 'uri'
 
-		blockName = "ReceiveHelperOffer"
 		broadcastURL = CreateBroadcastURL(receiverSourceID, blockName, userAttributes)
 		puts broadcastURL
 		uri = URI.parse(broadcastURL)
