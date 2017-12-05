@@ -105,7 +105,25 @@ class CommitmentController < ApplicationController
 			entName = "#{ent.firstName} #{ent.lastName}"
 			helperID = com.helper_id
 			SendCommitmentAcceptanceToHelper(entName, com.id, helperID)
-			puts "Offer sent"
+		end
+
+		render html: "Pass"
+	end
+
+	def RejectCommitmentOffer
+		commitmentID = params[:commitmentID].gsub(/\s|"|'/, '')
+		sourceID = params['messenger user id']
+
+		ent = Individual.find_by(sourceID: sourceID)
+		puts commitmentID
+		com = Commitment.find_by(id: commitmentID)
+		puts ent
+		puts com
+		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id #Correct entrepreneur, just to ensure that the individual is not doing anything to break the application
+			puts "Attempt to send rejection of offer"
+			entName = "#{ent.firstName} #{ent.lastName}"
+			helperID = com.helper_id
+			SendCommitmentRejectionToHelper(entName, com.id, helperID)
 		end
 
 		render html: "Pass"

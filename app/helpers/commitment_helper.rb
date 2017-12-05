@@ -21,5 +21,13 @@ module CommitmentHelper
 		SendMessageToIndividualByID(helperID, blockName, userAttributes)
 	end
 
+	def SendCommitmentRejectionToHelper(entName, comID, helperID)
+		userAttributes = {
+			entrepreneurName: "#{entName}",
+			commitmentID: "#{comID}"
+		}
+		blockName = "CommitmentOfferRejected"
+		SendMessageToIndividualByID(helperID, blockName, userAttributes)
+	end
 
 end
