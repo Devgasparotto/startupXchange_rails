@@ -16,17 +16,16 @@ module ChatfuelHelper
 	end
 
 	def SendMessageToIndividual(receiverSourceID, blockName, userAttributes)
-		#require 'net/http'
-		#require 'uri'
+		require 'net/http'
+		require 'uri'
 
 		blockName = "ReceiveHelperOffer"
 		broadcastURL = CreateBroadcastURL(receiverSourceID, blockName, userAttributes)
-		puts broadcastURL
-		# uri = URI.parse(broadcastURL)
-		# request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
-		# req_options = {
-		#   use_ssl: uri.scheme == "https",
-		# }
+		uri = URI.parse(broadcastURL)
+		request = Net::HTTP::Post.new(uri, 'Content-Type' => 'application/json')
+		req_options = {
+		  use_ssl: uri.scheme == "https",
+		}
 
 		# response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
 		# 	begin
