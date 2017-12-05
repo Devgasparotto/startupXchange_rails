@@ -148,9 +148,10 @@ class CommitmentController < ApplicationController
 		ent = Individual.find_by(sourceID: sourceID)
 		com = Commitment.find_by(id: commitmentID)
 		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id
+			puts "Attempting to Send Acceptance"
 			entName = "#{ent.firstName} #{ent.lastName}"
 			helperID = com.helper_id
-			SendMessageToIndividualByID(entName, com.id, helperID)
+			SendCommitmentCompletionAcceptance(entName, com.id, helperID)
 		end
 
 		render html: "Pass"
