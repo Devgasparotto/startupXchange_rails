@@ -35,11 +35,11 @@ module ChatfuelHelper
 				puts e
 			end
 		end
-
-		if response.message == 'OK'
-			puts "Message sent succesfully"
-			#Message sent succesfully
-		end
+		puts response
+		# if response.message == 'OK'
+		# 	puts "Message sent succesfully"
+		# 	#Message sent succesfully
+		# end
 	end
 
 	
