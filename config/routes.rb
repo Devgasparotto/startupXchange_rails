@@ -26,10 +26,5 @@ Rails.application.routes.draw do
   post "/AcceptCommitmentCompletion/", to: "commitment#AcceptCommitmentCompletion"
   post "/RejectCommitmentCompletion/", to: "commitment#RejectCommitmentCompletion"
 
-  #Test
-  get "/PrepopulateCommitmentStatuses", to: "commitment#PrepopulateCommitmentStatuses"
-
-
-
 
 end

@@ -173,19 +173,4 @@ class CommitmentController < ApplicationController
 		render html: "Pass"
 	end
 
-	def PrepopulateCommitmentStatuses
-		a = CommitmentStatus.new(statusName: 'offerSent', statusDescription: 'Helper has sent a commitment offer to an entrepreneur')
-		b = CommitmentStatus.new(statusName: 'offerAccepted', statusDescription: 'Entrepreneur has accepted helpers offer of help')
-		c = CommitmentStatus.new(statusName: 'offerRejected', statusDescription: 'Entrepreneur has rejected helpers offer of help')
-		d = CommitmentStatus.new(statusName: 'completionRequest', statusDescription: 'Helper indicates commitment is complete')
-		e = CommitmentStatus.new(statusName: 'completionRejected', statusDescription: 'Entrepreneur rejects commitment completion')
-		f = CommitmentStatus.new(statusName: 'completionAccepted', statusDescription: 'Entrepreneur accepts commitment completion')
-		a.save
-		b.save
-		c.save
-		d.save
-		e.save
-		f.save
-	end
-
 end
