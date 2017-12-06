@@ -54,42 +54,44 @@ class CommitmentController < ApplicationController
 	    }
 
 	    begin
-	    	sourceID = params['messenger user id']
+    		sourceID = params['messenger user id']
 			ind = Individual.find_by(sourceID: sourceID)
-	      puts Commitment.where(helper_id: ind.id)
-	      commitments = Commitment.where(helper_id: ind.id).to_a
-	      numCards = commitments.length / 3
-	      numCards += 1 if (commitments.length % 3 ) > 0
-	      cards = []
-	      elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
-	      (0..numCards-1).each do |i|
-	        cStart = i*3
-	        cEnd = [cStart + 2, commitments.length-1 ].min
-	        element = {
-	          title: "Select a commitment to complete",
-	          subtitle: nil,
-	          image_url: nil,
-	          buttons: 
-	            (cStart..cEnd).map do |j|
-	              {
-	                type: "show_block",
-	                title: "#{commitments[j].id} #{commitments[j].commitmentOffer}",
-	                block_name: "AttemptToComplete",
-	                set_attributes: {
-	                  commitmentIDToComplete: "#{commitments[j].id}"
-	                }
-	              }
-	            end
-	        }
-	        elements << element
-	      end
-	    rescue Exception => e
-	      response = {}
-	      puts e.backtrace.join( "\n")
-	    end
+			offerAcceptedCS = CommitmentStatus.find_by(statusName: 'offerAccepted')
+			completionRequestCS = CommitmentStatus.find_by(statusName: 'completionRequest')
+			completionRejectedCS = CommitmentStatus.find_by(statusName: 'completionRejected')
+			commitments = Commitment.where((helper_id: ind.id, commitmentStatus_id: offerAcceptedCS.id).or(helper_id: ind.id, commitmentStatus_id: completionRequestCS.id).or(helper_id: ind.id, commitmentStatus_id: completionRejectedCS.id)).to_a
+			
+			numCards = commitments.length / 3
+			numCards += 1 if (commitments.length % 3 ) > 0
+			cards = []
+			elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
+			(0..numCards-1).each do |i|
+				cStart = i*3
+				cEnd = [cStart + 2, commitments.length-1 ].min
+				element = {
+				title: "Select a commitment to complete",
+				subtitle: nil,
+				image_url: nil,
+				buttons: 
+				(cStart..cEnd).map do |j|
+					{
+						type: "show_block",
+						title: "#{commitments[j].id} #{commitments[j].commitmentOffer}",
+						block_name: "AttemptToComplete",
+						set_attributes: {
+							commitmentIDToComplete: "#{commitments[j].id}"
+						}
+					}
+				end
+			}
+			elements << element
+			end
+			rescue Exception => e
+				response = {}
+				puts e.backtrace.join( "\n")
+			end
 
-	    render json: response
-
+			render json: response
 	end
 
 	def AcceptCommitmentOffer
