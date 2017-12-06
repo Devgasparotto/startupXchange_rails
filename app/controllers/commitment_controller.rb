@@ -16,7 +16,8 @@ class CommitmentController < ApplicationController
 				if !entrepreneurID.nil? && !entrepreneurID.empty?
 					if !commitmentOffer.nil? && !commitmentOffer.empty?
 						puts "Beginning Commitment Creation"
-						com = Commitment.new(helper_id: ind.id, entreprenuer_id: entrepreneurID, commitmentOffer: commitmentOffer, commitmentDueDate: inputDate, commitmentStatus_id: 1)
+						cs = CommitmentStatus.find_by(statusName: 'offerSent')
+						com = Commitment.new(helper_id: ind.id, entreprenuer_id: entrepreneurID, commitmentOffer: commitmentOffer, commitmentDueDate: inputDate, commitmentStatus_id: cs.id)
 						com.save #TODO: this should be after the SendCommitOfferToEntrepreneur
 						comID = com.id
 						helperName = "#{ind.firstName} #{ind.lastName}"
