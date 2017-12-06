@@ -14,8 +14,16 @@ class HelperController < ApplicationController
 	end
 
 	def GetReliabilityRating
+		helper = Individual.find_by(sourceID: params['messenger user id'])
 		coms = Commitment.where(helper_id: params['messenger user id'])
-		
+		completeCS = CommitmentStatus.find_by(statusName: 'completionAccepted')
+		completeComs = coms.where(commitmentStatus_id: completeCS.id)
+		reliabilityRating = 0
+		totalNumComs = coms.count
+		completedNumComs = completeComs.count
+		if totalNumComs > 0 && completedNumComs > 0
+			reliabilityRating = (completeComs.count/coms.count)*10000
+		end
 		
 		response = {
 			"set_attributes": {
