@@ -61,7 +61,7 @@ class CommitmentController < ApplicationController
 			completionRejectedCS = CommitmentStatus.find_by(statusName: 'completionRejected')
 			commitments = Commitment.where("helper_id = #{ind.id} AND (commitmentStatus_id = #{offerAcceptedCS.id} OR commitmentStatus_id = #{completionRequestCS.id} OR commitmentStatus_id = #{completionRejectedCS.id})")
 			#commitments = Commitment.where((helper_id: ind.id, commitmentStatus_id: offerAcceptedCS.id).or(helper_id: ind.id, commitmentStatus_id: completionRequestCS.id).or(helper_id: ind.id, commitmentStatus_id: completionRejectedCS.id)).to_a
-			
+			puts commitments
 			numCards = commitments.length / 3
 			numCards += 1 if (commitments.length % 3 ) > 0
 			cards = []
@@ -91,7 +91,7 @@ class CommitmentController < ApplicationController
 				response = {}
 				puts e.backtrace.join( "\n")
 			end
-
+			puts "Got to end"
 			render json: response
 	end
 
