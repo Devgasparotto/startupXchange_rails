@@ -23,9 +23,9 @@ class HelperController < ApplicationController
 		completedNumComs = completeComs.count
 		puts totalNumComs
 		puts completedNumComs
-		if totalNumComs > 0 && completedNumComs > 0
+		#if totalNumComs > 0 && completedNumComs > 0
 			reliabilityRating = (completeComs.count/coms.count)*10000
-		end
+		#end
 		
 		response = {
 			"set_attributes": {
