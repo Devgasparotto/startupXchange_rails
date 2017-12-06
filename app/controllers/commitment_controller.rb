@@ -140,9 +140,12 @@ class CommitmentController < ApplicationController
 		helper = Individual.find_by(sourceID: sourceID)
 		com = Commitment.find_by(id: commitmentID)
 		if !com.nil? && !helper.nil? && com.helper_id == helper.id
+			cs = CommitmentStatus.find_by(statusName: 'completionRequest')
+			com.commitmentStatus_id = cs.id
 			helperName = "#{helper.firstName} #{helper.lastName}"
 			entID = com.entreprenuer_id
 			SendCommitmentCompletionPrompt(helperName, com.id, entID)
+			com.save
 		end
 
 		render html: "Pass"
@@ -156,9 +159,12 @@ class CommitmentController < ApplicationController
 		com = Commitment.find_by(id: commitmentID)
 		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id
 			puts "Attempting to Send Acceptance"
+			cs = CommitmentStatus.find_by(statusName: 'completionAccepted')
+			com.commitmentStatus_id = cs.id
 			entName = "#{ent.firstName} #{ent.lastName}"
 			helperID = com.helper_id
 			SendCommitmentCompletionAcceptance(entName, com.id, helperID)
+			com.save
 		end
 
 		render html: "Pass"
@@ -172,9 +178,12 @@ class CommitmentController < ApplicationController
 		com = Commitment.find_by(id: commitmentID)
 		if !com.nil? && !ent.nil? && com.entreprenuer_id == ent.id
 			puts "Attempting to Send Acceptance"
+			cs = CommitmentStatus.find_by(statusName: 'completionRejected')
+			com.commitmentStatus_id = cs.id
 			entName = "#{ent.firstName} #{ent.lastName}"
 			helperID = com.helper_id
 			SendCommitmentCompletionRejection(entName, com.id, helperID)
+			com.save
 		end
 
 		render html: "Pass"
