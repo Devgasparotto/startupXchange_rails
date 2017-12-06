@@ -12,4 +12,17 @@ class HelperController < ApplicationController
 
 		render html: "Pass"
 	end
+
+	def GetReliabilityRating
+		coms = Commitment.where(helper_id: params['messenger user id'])
+		
+		
+		response = {
+			"set_attributes": {
+				"reliabilityRating": "#{reliabilityRating}"
+			}
+		}
+
+		render json: response
+	end
 end

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   #Helper Controller
   post "/SetIndividualAsHelper/", to: "helper#SetIndividualAsHelper"
+  post "/GetReliabilityRating/", to: "helper#GetReliabilityRating"
 
   #Entrepreneur Controller
   post "/SetIndividualAsEntrepreneur/", to: "entrepreneur#SetIndividualAsEntrepreneur"
@@ -25,6 +26,8 @@ Rails.application.routes.draw do
   post "/AcceptCommitmentCompletion/", to: "commitment#AcceptCommitmentCompletion"
   post "/RejectCommitmentCompletion/", to: "commitment#RejectCommitmentCompletion"
 
+  #Test
+  get "/PrepopulateCommitmentStatuses", to: "commitment#PrepopulateCommitmentStatuses"
 
 
 
