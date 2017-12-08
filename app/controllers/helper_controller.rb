@@ -27,7 +27,8 @@ class HelperController < ApplicationController
 		
 		response = {
 			"set_attributes": {
-				"reliabilityRating": "#{reliabilityRating}"
+				"reliabilityRating": "#{reliabilityRating}",
+				"completedNumCommitments": "#{completedNumComs}"
 			}
 		}
 
