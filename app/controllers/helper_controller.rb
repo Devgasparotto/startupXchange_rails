@@ -22,7 +22,7 @@ class HelperController < ApplicationController
 		totalNumComs = coms.count
 		completedNumComs = completeComs.count
 		if totalNumComs > 0 && completedNumComs > 0
-			reliabilityRating = (completedNumComs*10000)/totalNumComs
+			reliabilityRating = (completedNumComs*1000)/totalNumComs
 		end
 		
 		response = {
